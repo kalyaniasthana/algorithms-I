@@ -46,35 +46,34 @@ def merge_and_count_splitInv(A, n1, B, n2):
 		j += 1
 		k += 1
 
-	print(split_inv)
-
-	return C 
+	return C, split_inv
 
 
-def merge_sort(arr, n):
+def merge_sort_and_count(arr, n):
 
 	if n == 1:
-		return arr
+		return arr, 0
 
 	mid = (n+1)//2
 
 	#first half of arr
 	arr_1 = arr[:mid]
 	n1 = len(arr_1)
-	A = merge_sort(arr_1, n1)
+	A, x = merge_sort_and_count(arr_1, n1)
 	#second half of arr
 	arr_2 = arr[mid:]
 	n2 = len(arr_2)
-	B = merge_sort(arr_2, n2)
+	B, y = merge_sort_and_count(arr_2, n2)
 	#merge both lists
-	C = merge_and_count_splitInv(A, n1, B, n2)
-	return C
+	C, z = merge_and_count_splitInv(A, n1, B, n2)
+	return C, x+y+z
 
-arr = [38, 47, 43, 3, 9, 82, 10]
-print(merge_sort(arr, len(arr)))
+#arr = [1, 20, 6, 4, 5]
+
 #A = [1, 3, 5, 7]
 #B = [2, 4, 6, 8]
 #print(merge_and_count_splitInv(A, 4, B, 4))
 
-#filename = 'integers.txt'
-#print(text_file_to_list(filename))
+filename = 'integers.txt'
+arr = text_file_to_list(filename)
+print(merge_sort_and_count(arr, len(arr)))
