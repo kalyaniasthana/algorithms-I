@@ -11,8 +11,8 @@ def text_file_to_list(filename):
 def merge_and_count_splitInv(A, n1, B, n2):
 
 	#A and B are sorted in increasing order
-	#A is the first sorted array of length n/2
-	#B is the second sorted array of length n/2
+	#A is the first sorted array of length n1
+	#B is the second sorted array of length n2
 
 	C = [0 for i in range(n1+n2)] #output array of length n
 	i = 0
@@ -46,12 +46,35 @@ def merge_and_count_splitInv(A, n1, B, n2):
 		j += 1
 		k += 1
 
-	return C, split_inv 
+	print(split_inv)
+
+	return C 
 
 
-A = [1, 3, 5, 7]
-B = [2, 4, 6, 8]
+def merge_sort(arr, n):
 
-print(merge_and_count_splitInv(A, 4, B, 4))
+	if n == 1:
+		return arr
+
+	mid = (n+1)//2
+
+	#first half of arr
+	arr_1 = arr[:mid]
+	n1 = len(arr_1)
+	A = merge_sort(arr_1, n1)
+	#second half of arr
+	arr_2 = arr[mid:]
+	n2 = len(arr_2)
+	B = merge_sort(arr_2, n2)
+	#merge both lists
+	C = merge_and_count_splitInv(A, n1, B, n2)
+	return C
+
+arr = [38, 47, 43, 3, 9, 82, 10]
+print(merge_sort(arr, len(arr)))
+#A = [1, 3, 5, 7]
+#B = [2, 4, 6, 8]
+#print(merge_and_count_splitInv(A, 4, B, 4))
+
 #filename = 'integers.txt'
 #print(text_file_to_list(filename))
