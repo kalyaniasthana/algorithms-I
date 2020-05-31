@@ -74,6 +74,6 @@ def merge_sort_and_count(arr, n):
 #B = [2, 4, 6, 8]
 #print(merge_and_count_splitInv(A, 4, B, 4))
 
-filename = 'integers.txt'
-arr = text_file_to_list(filename)
-print(merge_sort_and_count(arr, len(arr)))
+#filename = 'MergeSort.txt'
+#arr = text_file_to_list(filename)
+#print(merge_sort_and_count(arr, len(arr)))
