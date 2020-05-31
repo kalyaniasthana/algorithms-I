@@ -1,6 +1,10 @@
 from split_inversions import text_file_to_list
-#when pivot is the first element
+
 def partition(arr, l, r):
+
+	#when pivot is the first element
+
+	'''
 
 	p = arr[l]
 	i = l + 1
@@ -18,8 +22,34 @@ def partition(arr, l, r):
 	temp = arr[i - 1]
 	arr[i-1] = arr[l]
 	arr[l] = temp
-	#print(arr)
+	print(arr)
 	return i-1, r-l-1
+
+	'''
+
+	#when pivot is the last element
+	p = arr[r - 1]
+	#print(p)
+	i = l
+	j = l
+
+	while j < r - 1:
+
+		if arr[j] < p:
+			temp = arr[i]
+			arr[i] = arr[j]
+			arr[j] = temp
+			i += 1
+		j += 1
+
+	temp = arr[i]
+	arr[i] = arr[r - 1]
+	arr[r - 1] = temp
+	#print(arr)
+
+	#print(i)
+
+	return i, r - l - 1
 
 def sort_quick(arr, l, r):
 	count = 0
